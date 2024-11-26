@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Lab5_2</title>
+</head>
+<body>
+    <h1>Обробка рядка</h1>
+    <p>Введіть текст у поле нижче:</p>
+    <textarea id="inputText" rows="5" cols="50"></textarea><br><br>
+    <button onclick="processText()">Обробити</button>
+    <h2>Результати:</h2>
+    <p id="reorderedText"></p>
+    <p id="matchingWordsCount"></p>
+
+    <script>
+        function processText() {
+            const inputText = document.getElementById("inputText").value;
+
+            const words = inputText.split(/\s+/).filter(word => word.length > 0);
+
+            if (words.length >= 3) {
+                const reorderedWords = [words[0], words[2], words[1], ...words.slice(3)];
+                document.getElementById("reorderedText").innerText = `Рядок після перестановки: ${reorderedWords.join(" ")}`;
+            } else {
+                document.getElementById("reorderedText").innerText = "Рядок має менше трьох слів, перестановка неможлива.";
+            }
+
+            let matchingWordsCount = 0;
+            for (const word of words) {
+                const firstLetter = word[0].toLowerCase();
+                const lastLetter = word[word.length - 1].toLowerCase();
+                if (firstLetter === lastLetter) {
+                    matchingWordsCount++;
+                }
+            }
+            document.getElementById("matchingWordsCount").innerText = `Кількість слів із однаковими першою та останньою літерами: ${matchingWordsCount}`;
+        }
+    </script>
+
+    <h1>Next steps</h1>
+    <a href="index.html" class="butn">Повернутися</a>
+
+</body>
+</html>

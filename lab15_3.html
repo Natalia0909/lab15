@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Шифрування тексту</title>
+</head>
+<body>
+    <h1>Програма для шифрування тексту</h1>
+    <textarea id="inputText" rows="4" cols="50" placeholder="Введіть текст для шифрування (українською мовою)"></textarea><br><br>
+    <button onclick="encryptText()">Шифрувати</button>
+    <h2>Зашифрований текст:</h2>
+    <p id="encryptedText"></p>
+
+    <script>
+        function shiftLetter(letter) {
+            const alphabet = 'абвгдеєжзиійклмнопрстуфхцчшщьюя';
+            const index = alphabet.indexOf(letter.toLowerCase());
+            if (index === -1) return letter; 
+
+            const nextIndex = (index + 1) % alphabet.length;
+            return letter === letter.toUpperCase() ? alphabet[nextIndex].toUpperCase() : alphabet[nextIndex];
+        }
+
+        function encryptText() {
+            const inputText = document.getElementById('inputText').value;
+            let encryptedText = '';
+
+            for (let i = 0; i < inputText.length; i++) {
+                encryptedText += shiftLetter(inputText[i]);
+            }
+
+            document.getElementById('encryptedText').textContent = encryptedText;
+        }
+    </script>
+    <h1>Next steps</h1>
+    <a href="index.html" class="butn">Повернутися</a>
+</body>
+</html>

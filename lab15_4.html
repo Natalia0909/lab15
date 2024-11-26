@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
+    <title>Шифрування тексту</title>
+</head>
+<body>
+    <h1>Програма для шифрування тексту</h1>
+    <textarea id="inputText" rows="4" cols="50" placeholder="Введіть текст для шифрування (українською)"></textarea><br><br>
+    <button onclick="encryptText()">Шифрувати</button>
+    <h2>Зашифрований текст:</h2>
+    <p id="encryptedText"></p>
+
+    <script>
+        function shuffleWord(word) {
+            if (word.length <= 2) {
+                return word;
+            }
+            const middle = word.slice(1, -1); 
+            const shuffledMiddle = middle.split('').sort(() => Math.random() - 0.5).join(''); 
+            return word[0] + shuffledMiddle + word[word.length - 1]; 
+        }
+
+        function encryptText() {
+            const inputText = document.getElementById('inputText').value;
+            const words = inputText.split(' ');
+            const encryptedWords = words.map(word => shuffleWord(word)); 
+            const encryptedText = encryptedWords.join(' '); 
+            document.getElementById('encryptedText').textContent = encryptedText; 
+        }
+    </script>
+
+    <h1>Next steps</h1>
+    <a href="index.html" class="butn">Повернутися</a>
+</body>
+</html>

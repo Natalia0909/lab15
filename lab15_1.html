@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Lab5_1</title>
+</head>
+<body>
+    <h1>Обробка тексту</h1>
+    <p>Введіть текст у поле нижче:</p>
+    <textarea id="inputText" rows="5" cols="50"></textarea><br><br>
+    <button onclick="processText()">Обробити</button>
+    <h2>Результати:</h2>
+    <p id="dotCount"></p>
+    <p id="modifiedText"></p>
+
+    <script>
+        function processText() {
+            const inputText = document.getElementById("inputText").value;
+
+            let dotCount = 0;
+            for (let i = 0; i < inputText.length - 1; i++) {
+                if (inputText[i] === '.' && inputText[i + 1] === ' ') {
+                    dotCount++;
+                }
+            }
+
+            const modifiedText = inputText.replace(/ST/g, 'P');
+
+            document.getElementById("dotCount").innerText = `Кількість символів '.' перед пробілом: ${dotCount}`;
+            document.getElementById("modifiedText").innerText = `Змінений текст: ${modifiedText}`;
+        }
+    </script>
+
+    <h1>Next steps</h1>
+    <a href="index.html" class="butn">Повернутися</a>
+</body>
+</html>

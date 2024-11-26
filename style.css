@@ -1,0 +1,13 @@
+body {
+   text-align: center;
+}
+h1 {
+   font-size: 40px;
+}
+.butn {
+   background-color: #8C765A;
+   text-decoration: none;
+   color: whitesmoke;
+   padding: 18px 22px;
+   border-radius: 30%;
+}
